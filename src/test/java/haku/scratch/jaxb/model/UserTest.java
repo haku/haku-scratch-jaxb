@@ -21,8 +21,15 @@ public class UserTest {
 
 	@Test
 	public void itUnmarshalsUserFromXml () throws Exception {
-		User u = UserBuilder.fromXml("<user name=\"bob\" />").build();
+		User u = UserBuilder.fromXml("<user name=\"bob\" />");
 		assertEquals("bob", u.getName());
+	}
+
+	@Test
+	public void itCopiesItem () {
+		User u0 = UserBuilder.create("bob").build();
+		User u1 = UserBuilder.fromUser(u0).build();
+		assertEquals("bob", u1.getName());
 	}
 
 //	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -26,13 +26,16 @@ public class UserBuilder {
 		return builder;
 	}
 
-	public static UserBuilder fromXml (String s) throws JAXBException {
+	public static UserBuilder fromUser (User u) {
+		return create(u.getName());
+	}
+
+	public static User fromXml (String s) throws JAXBException {
 		return fromXml(Model.stringToInputStream(s));
 	}
 
-	public static UserBuilder fromXml (InputStream is) throws JAXBException {
-		User u = User.class.cast(Model.getUnmarshaller().unmarshal(is));
-		return create(u.getName());
+	public static User fromXml (InputStream is) throws JAXBException {
+		return User.class.cast(Model.getUnmarshaller().unmarshal(is));
 	}
 
 //	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
