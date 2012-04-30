@@ -16,12 +16,12 @@ public class UserTest {
 	@Test
 	public void itMarshalsUserToXml () throws Exception {
 		User u = UserBuilder.create("bob").build();
-		assertXmlEquals(u, "<user name=\"bob\" />");
+		assertXmlEquals(u, "<user name=\"bob\" xmlns=\"http://vaguehope.com/xml/example\"/>");
 	}
 
 	@Test
 	public void itUnmarshalsUserFromXml () throws Exception {
-		User u = UserBuilder.fromXml("<user name=\"bob\" />");
+		User u = UserBuilder.fromXml("<user name=\"bob\" xmlns=\"http://vaguehope.com/xml/example\"/>");
 		assertEquals("bob", u.getName());
 	}
 
